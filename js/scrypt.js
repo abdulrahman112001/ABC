@@ -120,17 +120,51 @@ AOS.init({
 
 // ============================== dark mode
 
-let dark = document.querySelector(".moon")
+// let dark = document.querySelector(".moon")
 
-dark.onclick= function(){
+// dark.onclick= function(){
 
- document.body.classList.toggle("dark")
- if (document.body.classList.contains("dark")){
-   dark.src = "images/sun.png"
+//  document.body.classList.toggle("dark")
+//  if (document.body.classList.contains("dark")){
+//    dark.src = "images/sun.png"
 
- }else{
-   dark.src = "images/moon.png"
- }
+//  }else{
+//    dark.src = "images/moon.png"
+//  }
   
-}
+// }
 // =====================
+let dark = document.querySelector('.moon');
+
+if (localStorage.getItem('darkMode') === null) {
+  localStorage.setItem('darkMode', 'false');
+}
+
+function checkState() {
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark');
+    dark.src = 'images/sun.png';
+  } else {
+    document.body.classList.remove('dark');
+    dark.src = 'images/moon.png';
+  }
+}
+checkState();
+
+dark.onclick = function () {
+  localStorage.getItem('darkMode') === 'true'
+    ? localStorage.setItem('darkMode', 'false')
+    : localStorage.setItem('darkMode', 'true');
+  checkState();
+};
+
+
+
+
+
+
+
+
+
+
+
